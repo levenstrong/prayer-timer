@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>St. Gregory's Prayer Timer</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Screen 1: Landing / Candle Wall -->
+  <div id="screen-landing" class="screen active">
+    <header class="landing-header">
+      <img src="assets/logo.png" alt="St. Gregory's Prayer Timer" class="logo">
+      <h1 class="title">St. Gregory's<br>Prayer Timer</h1>
+    </header>
+    <section class="candle-wall" aria-label="Community candle wall">
+      <h2 class="section-heading">Community Candles</h2>
+      <div id="candle-list" class="candle-list" aria-live="polite">
+        <p class="candle-empty">Loading candles…</p>
+      </div>
+    </section>
+    <div class="landing-actions">
+      <button id="btn-begin" class="btn-primary">Begin Prayer</button>
+    </div>
+  </div>
+
+  <!-- Screen 2: Timer Setup -->
+  <div id="screen-setup" class="screen">
+    <h2 class="title setup-title">Set Your Timer</h2>
+    <div class="timer-setup">
+      <button id="btn-minus" class="btn-stepper" aria-label="Decrease minutes">−</button>
+      <span id="duration-display" class="duration-display">20</span>
+      <button id="btn-plus" class="btn-stepper" aria-label="Increase minutes">+</button>
+    </div>
+    <p class="setup-label">minutes</p>
+    <button id="btn-start" class="btn-primary">Start</button>
+    <button id="btn-back-landing" class="btn-link">Back</button>
+  </div>
+
+  <!-- Screen 3: Active Meditation -->
+  <div id="screen-meditation" class="screen screen-dark">
+    <div class="meditation-container">
+      <p id="timer-display" class="timer-display" role="timer" aria-live="off">20:00</p>
+    </div>
+  </div>
+
+  <!-- Screen 4: Post-Meditation -->
+  <div id="screen-post" class="screen">
+    <h2 class="title post-title">Peace be with you</h2>
+    <p class="post-prompt">Leave a word for the community</p>
+    <form id="candle-form" class="candle-form" novalidate>
+      <label for="candle-name" class="form-label">Your Name</label>
+      <input type="text" id="candle-name" class="form-input" maxlength="30" required placeholder="Name" autocomplete="off">
+      <span class="char-count"><span id="name-count">0</span>/30</span>
+
+      <label for="candle-comment" class="form-label">Your Prayer</label>
+      <textarea id="candle-comment" class="form-input form-textarea" maxlength="200" required placeholder="A word, a prayer, an intention…" autocomplete="off"></textarea>
+      <span class="char-count"><span id="comment-count">0</span>/200</span>
+
+      <button type="submit" class="btn-primary">Light a Candle</button>
+    </form>
+    <button id="btn-skip" class="btn-link">Skip</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
